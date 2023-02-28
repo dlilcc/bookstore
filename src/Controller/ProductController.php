@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
     /**
@@ -13,17 +14,17 @@ use Symfony\Component\String\Slugger\SluggerInterface;
  */
 class ProductController extends AbstractController
 {
-    private ProductRepository $repo;
-    public function __construct(ProductRepository $repo)
-   {
-      $this->repo = $repo;
-   }
+//     private ProductRepository $repo;
+//     public function __construct(ProductRepository $repo)
+//    {
+//       $this->repo = $repo;
+//    }
     /**
      * @Route("/", name="product_show")
      */
-    public function readAllAction(): Response
+    public function readAllAction(ProductRepository $repo): HttpFoundationResponse
     {
-        $products = $this->repo->findAll();
+        $products = $repo->findAll();
         return $this->render('product/index.html.twig', [
             'products'=>$products
         ]);
@@ -32,7 +33,7 @@ class ProductController extends AbstractController
      /**
      * @Route("/{id}", name="product_read",requirements={"id"="\d+"})
      */
-    public function showAction(Product $p): Response
+    public function showAction(Product $p): HttpFoundationResponse
     {
         return $this->render('detail.html.twig', [
             'p'=>$p
@@ -42,7 +43,7 @@ class ProductController extends AbstractController
      /**
      * @Route("/add", name="product_create")
      */
-    public function createAction(Request $req, SluggerInterface $slugger): Response
+    public function createAction(Request $req, SluggerInterface $slugger, ProductRepository $repo): HttpFoundationResponse
     {
         
         $p = new Product();
@@ -58,8 +59,8 @@ class ProductController extends AbstractController
                 $newFilename = $this->uploadImage($imgFile,$slugger);
                 $p->setImage($newFilename);
             }
-            $this->repo->save($p,true);
-            return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+            $repo->save($p,true);
+            return $this->redirectToRoute('product_show', []);
         }
         return $this->render("product/form.html.twig",[
             'form' => $form->createView()
@@ -70,7 +71,7 @@ class ProductController extends AbstractController
      * @Route("/edit/{id}", name="product_edit",requirements={"id"="\d+"})
      */
     public function editAction(Request $req, Product $p,
-    SluggerInterface $slugger): Response
+    SluggerInterface $slugger, ProductRepository $repo): HttpFoundationResponse
     {
         
         $form = $this->createForm(ProductType::class, $p);   
@@ -86,8 +87,8 @@ class ProductController extends AbstractController
                 $newFilename = $this->uploadImage($imgFile,$slugger);
                 $p->setImage($newFilename);
             }
-            $this->repo->save($p,true);
-            return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+            $repo->save($p,true);
+            return $this->redirectToRoute('product_show', []);
         }
         return $this->render("product/form.html.twig",[
             'form' => $form->createView()
@@ -113,12 +114,11 @@ class ProductController extends AbstractController
      * @Route("/delete/{id}",name="product_delete",requirements={"id"="\d+"})
      */
     
-    public function deleteAction(Request $request, Product $p): Response
+    public function deleteAction(Request $request, Product $p, ProductRepository $repo): HttpFoundationResponse
     {
-        $this->repo->remove($p,true);
-        return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+        $repo->remove($p,true);
+        return $this->redirectToRoute('product_show', []);
     }
-
 }
 
 ?>

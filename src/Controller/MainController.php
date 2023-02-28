@@ -9,17 +9,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    private ProductRepository $repo;
-    public function __construct(ProductRepository $repo)
-   {
-      $this->repo = $repo;
-   }
+//     private ProductRepository $repo;
+//     public function __construct(ProductRepository $repo)
+//    {
+//       $this->repo = $repo;
+//    }
     /**
      * @Route("/", name="homepage")
      */
-    public function indexPageAction(): Response
+    public function indexPageAction(ProductRepository $repo): Response
     {
-        $products = $this->repo->findAll();
+        $products = $repo->findAll();
         return $this->render('home.html.twig', [
             'products'=>$products
         ]);
