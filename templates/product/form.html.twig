@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            {# <form class="form form-vertical" method="POST" action="#"> #}
+                            <form class="form form-vertical" method="POST" action="#"> 
                             {{ form_start(form,{'attr':{'class':'form form-vertical'}} ) }}
                                 <div class="form-body">
                                     <div class="row">
@@ -19,9 +19,9 @@
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Product Name</label>
                                                 {{ form_widget(form.name, {'attr':{'placeholder':'Product Name'}}) }}
-                                                {# <input type="text" id="pname" class="form-control"
+                                                <input type="text" id="pname" class="form-control"
                                                     name="Product_Name" placeholder="Product Name"
-                                                    value =""> #}
+                                                    value =""> 
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -80,3 +80,4 @@
                     </div> <!--card content-->
                 </div> <!--card-->
             </div><!--page content-->
+{% endblock %}
