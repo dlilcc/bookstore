@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Author;
 use App\Entity\Category;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -24,6 +25,10 @@ use Symfony\Component\Form\FormBuilderInterface;
             ->add('quantity')
             ->add('procat',EntityType::class,[
                 'class'=>Category::class,
+                'choice_label'=>'name'
+            ])
+            ->add('proau',EntityType::class,[
+                'class'=>Author::class,
                 'choice_label'=>'name'
             ])
             ->add('file', FileType::class,[

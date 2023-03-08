@@ -3,14 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Category;
-use App\Entity\Product;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 class CategoryController extends AbstractController
 {
@@ -55,7 +53,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("category/edit/{id}", name="category_edit",requirements={"id"="\d+"})
+     * @Route("/category/edit/{id}", name="category_edit",requirements={"id"="\d+"})
      */
     public function editAction(Request $req, Category $c,
     CategoryRepository $repo): Response
@@ -74,7 +72,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("category/delete/{id}",name="category_delete",requirements={"id"="\d+"})
+     * @Route("/category/delete/{id}",name="category_delete",requirements={"id"="\d+"})
      */
      public function deleteAction(Category $c, CategoryRepository $repo): Response
      {

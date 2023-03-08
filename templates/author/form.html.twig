@@ -1,10 +1,10 @@
 {% extends "admin.html.twig" %}
 {% block title %}
-    Admin Page - Product
+    Admin Page - Author
 {% endblock %}
 {% block body %}
       <div className="page-heading pb-2 mt-4 mb-2 ">
-                <h3>Manager</h3> <a href="{{path('product_show')}}"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
+                <h3>Manager</h3> <a href="{{path('author_show')}}"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
             </div>
             <div class="page-content mt-4">
                 <div class="card">
@@ -17,45 +17,20 @@
                                     
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="first-name-vertical">Product Name</label>
-                                                {{ form_widget(form.name, {'attr':{'placeholder':'Product Name'}}) }}
+                                                <label for="first-name-vertical">Author Name</label>
+                                                {{ form_widget(form.name, {'attr':{'placeholder':'Author Name'}}) }}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label for="contact-info-vertical">Price</label>
-                                                {{ form_widget(form.price, {'attr':{'placeholder':'Price'}}) }}
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="first-name-vertical">Product Date</label>
-                                                {{ form_widget(form.created, {'attr':{'placeholder':'yyyy-mm-dd'}}) }}
-                                                
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="contact-info-vertical">Quantity</label>
-                                                {{ form_widget(form.quantity, {'attr':{'placeholder':'0-100'}}) }}
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="contact-info-vertical">Category</label>
-                                                {{ form_widget(form.procat, {'attr':{'placeholder':'0-100'}}) }}
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="contact-info-vertical">Author</label>
-                                                {{ form_widget(form.proau, {'attr':{'placeholder':'0-100'}}) }}
+                                                <label for="contact-info-vertical">Email</label>
+                                                {{ form_widget(form.email, {'attr':{'placeholder':'Email'}}) }}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="image-vertical"> {{ form_label(form.file) }}</label>
+                                               
                                                 {{ form_widget(form.file) }}
                                             </div>
                                         </div>
