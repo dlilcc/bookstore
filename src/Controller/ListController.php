@@ -31,3 +31,4 @@ class ListController extends AbstractController
         ]);
     }
 }
+?>

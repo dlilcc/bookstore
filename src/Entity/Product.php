@@ -42,6 +42,18 @@ class Product
      */
     private $quantity;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $procat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $proau;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,4 +118,29 @@ class Product
 
         return $this;
     }
+
+    public function getProcat(): ?Category
+    {
+        return $this->procat;
+    }
+
+    public function setProcat(?Category $procat): self
+    {
+        $this->procat = $procat;
+
+        return $this;
+    }
+
+    public function getProau(): ?Author
+    {
+        return $this->proau;
+    }
+
+    public function setProau(?Author $proau): self
+    {
+        $this->proau = $proau;
+
+        return $this;
+    }
 }
+?>

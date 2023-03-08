@@ -46,6 +46,12 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
+                                                <label for="contact-info-vertical">Quantity</label>
+                                                {{ form_widget(form.procat, {'attr':{'placeholder':'0-100'}}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
                                                 <label for="image-vertical"> {{ form_label(form.file) }}</label>
                                                
                                                 {{ form_widget(form.file) }}

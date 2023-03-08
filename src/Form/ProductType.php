@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace App\Form;
 
+use App\Entity\Category;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -20,6 +22,10 @@ use Symfony\Component\Form\FormBuilderInterface;
                 'required' => false
             ])
             ->add('quantity')
+            ->add('procat',EntityType::class,[
+                'class'=>Category::class,
+                'choice_label'=>'name'
+            ])
             ->add('file', FileType::class,[
                 'label' => 'Product Image',
                 'required' => false,
