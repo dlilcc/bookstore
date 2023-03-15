@@ -14,11 +14,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AuthorController extends AbstractController
 {
-//     private ProductRepository $repo;
-//     public function __construct(ProductRepository $repo)
-//    {
-//       $this->repo = $repo;
-//    }
     /**
      * @Route("/author", name="author_show")
      */

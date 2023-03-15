@@ -1,0 +1,40 @@
+{% extends "admin.html.twig" %}
+{% block title %}
+    Admin Page - Contact
+{% endblock %}
+{% block body %}
+      <div className="page-heading pb-2 mt-4 mb-2 ">
+                <h3>Manager</h3> <button type="button" class="btn btn-outline-primary">Back to index</button>
+            </div>
+            <div class="page-content mt-4">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            {# <form class="form form-vertical" method="POST" action="#"> #}
+                            {{ form_start(form,{'attr':{'class':'form form-vertical'}} ) }}
+                                <div class="form-body">
+                                    <div class="row">
+                                    
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-vertical">Name client</label>
+                                                {{ form_widget(form.name, {'attr':{'placeholder':'Name client'}}) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="first-name-vertical">Feedback</label>
+                                                {{ form_widget(form.feedback, {'attr':{'placeholder':'Feedback'}}) }}
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            {# </form> #}
+                            {{ form_end(form) }}
+                        </div> <!--card body-->
+                    
+                    </div> <!--card content-->
+                </div> <!--card-->
+            </div><!--page content-->
+{% endblock %}
